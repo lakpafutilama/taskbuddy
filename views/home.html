@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-image"
+    style="
+      background-image: url('https://images.squarespace-cdn.com/content/v1/6160742e58596279bef906ba/1652183962472-LM1WN5GVWUEP0TBAAINC/0_VxCR_2R9v9RoeRFv.jpeg');
+      height: 100vh;
+    "
+  >
+    <!-- signout -->
+    <div
+      class="modal fade"
+      id="signout"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="signupTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-danger" id="exampleModalLongTitle">
+              LOG OUT
+            </h5>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              Do you want to logout?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    No
+                  </button>
+                  <button type="button" class="btn btn-danger">Yes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <nav class="navbar navbar-expand navbar-light bg-dark">
+        <a
+          href="#"
+          class="navbar-brand text-danger"
+          style="padding-left: 25px; padding-right: 25px; size: 0cap"
+          >TASK BUDDY</a
+        >
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse"
+          id="navbarCollapse"
+          style="color: white"
+        >
+          <div class="navbar-nav">
+            <a href="#" class="nav-item nav-link active" style="color: white"
+              >Home</a
+            >
+            <a href="#" class="nav-item nav-link" style="color: white"
+              >About Us</a
+            >
+            <a href="#" class="nav-item nav-link" style="color: white">Help</a>
+            <a
+              href="#"
+              class="nav-item nav-link disabled"
+              tabindex="-1"
+              style="color: darkgrey"
+              >Reports</a
+            >
+          </div>
+          <div class="navbar-nav ms-auto" style="padding-right:25px;">
+            <button
+              class="btn btn-outline-success my-2 my-sm-0"
+              data-toggle="modal"
+              data-target="#signout"
+              
+            >
+              LogOut
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container-fluid">
+      <img src="sources/logo2.png" height="475px" alt="" />
+    </div>
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-column">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <span class="footer-title">Product</span>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Product 2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Plans & Prices</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Frequently asked questions</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 footer-column">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <span class="footer-title">Company</span>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Job postings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">News and articles</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 footer-column">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <span class="footer-title">Contact & Support</span>
+              </li>
+              <li class="nav-item">
+                <span class="nav-link"
+                  ><i class="fas fa-phone"></i>+47 45 80 80 80</span
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="fas fa-comments"></i>Live chat</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="fas fa-envelope"></i>Contact us</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="fas fa-star"></i>Give feedback</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+
+        <div class="row text-center">
+          <div class="col-md-4 box">
+            <span class="copyright quick-links"
+              >Copyright &copy; Your Website
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+            </span>
+          </div>
+          <div class="col-md-4 box">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 box">
+            <ul class="list-inline quick-links">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/2c08b9d654.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
