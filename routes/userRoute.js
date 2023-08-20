@@ -1,9 +1,9 @@
 const express = require("express");
-const { getUser, addUser } = require("../controllers/userController");
+const { checkUser, addUser } = require("../controllers/userController");
 const validateUser = require("../validators/userValidator");
 const router = express.Router();
 
-router.get("/", getUser);
+router.post("/login", checkUser);
 
 router.post("/", validateUser, addUser);
 

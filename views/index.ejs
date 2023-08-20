@@ -11,12 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body
-    class="bg-image"
-    style="
-      background-image: url('https://images.squarespace-cdn.com/content/v1/6160742e58596279bef906ba/1652183962472-LM1WN5GVWUEP0TBAAINC/0_VxCR_2R9v9RoeRFv.jpeg');
-      height: 100vh;
-    "
-  >
+  style="background-image: url('https://wallpaperset.com/w/full/4/6/3/105103.jpg');
+  ">
 
     <!-- login -->
     <div
@@ -27,7 +23,7 @@
       aria-labelledby="loginTitle"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered" style="width: 400px;" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title text-success" id="exampleModalLongTitle" style="font-weight: bold;">
@@ -224,13 +220,14 @@
       <nav class="navbar navbar-expand navbar-light bg-dark">
         <a
           href="#"
-          class="navbar-brand text-danger"
-          style="padding-left: 25px; padding-right: 25px; size: 0cap"
+          class="navbar-brand"
+          style="color: white; padding-left: 25px; font-weight: 700; padding-right: 25px; size: 0cap"
           >TASK BUDDY</a
         >
           <div class="navbar-nav ms-auto" style="padding-right: 25px">
             <button
               class="btn btn-outline-success my-2 my-sm-0"
+              style="color: white"
               data-toggle="modal"
               data-target="#login"
             >
@@ -239,6 +236,7 @@
             <div style="padding-right: 10px"></div>
             <button
               class="btn btn-outline-success my-2 my-sm-0"
+              style="color: white"
               data-toggle="modal"
               data-target="#signup"
             >
@@ -252,7 +250,7 @@
         <div class="col-md-4">
             <img src="logo2.png" height="475px" alt="" />
         </div>
-            <p class="container-fluid" style="color: white; margin-left: 10px; width: 400px; height: 30px; padding-top: 250px; opacity: 1;"> Task Buddy is a platform designed to help individuals organize, track, 
+            <p class="container-fluid" style="width: 400px; height: 30px; padding-top: 250px;"> Task Buddy is a platform designed to help individuals organize, track, 
                 and prioritize tasks and activities. These tool aims to improve productivity, collaboration, and time management by providing a
                 structured way to manage work-related tasks and projects. Here are some key features and concepts associated with task 
                 management tools
@@ -283,10 +281,11 @@
               password
             })
             .then(function (response) {
-              window.location("./home.html")
+              alert(response.data.data)
+              window.location.href = "dashboard"
             })
             .catch(function (error) {
-              alert(JSON.stringify(error));
+              alert("Error");
             });
           } else {
             form.classList.add('was-validated');
@@ -310,16 +309,17 @@
           if (form.checkValidity()) {
             const username = document.getElementById('username').value;
             const password = document.getElementById('lpassword').value;
-            axios.get("http://localhost:8080/user", {
-              name: username,
+            axios.post("http://localhost:8080/user/login", {
+              username,
               password
             })
             .then(function (response) {
-              alert("Login successfull");
-              // window.location()
+              console.log(response)
+              window.location.href = "dashboard"
             })
             .catch(function (error) {
-              alert(error);
+              console.log(error.response.data.message)
+              alert(error.response.data.message);
             });
           } else {
             form.classList.add('was-validated');

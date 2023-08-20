@@ -1,5 +1,7 @@
-const Task = require("../model/taskSchema");
+const db = require("../associations/association");
 const { response } = require("../utils/response");
+
+const Task = db.task;
 
 async function getTasks(req, res, next) {
   try {

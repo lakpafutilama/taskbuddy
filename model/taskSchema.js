@@ -1,13 +1,81 @@
-const { mongoose } = require("mongoose");
-
-const taskSchema = new mongoose.Schema({
-  user_id: { type: Number, unique: true },
-  title: { type: String },
-  description: { type: String },
-  task_status: { type: String },
-  priority: { type: String },
-  duration: { type: Number },
-});
-const Task = mongoose.model("Task", taskSchema);
-
-module.exports = Task;
+module.exports = (sequelize, DataTypes) => {
+  const Task = sequelize.define(
+    "tasks",
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        unique: true,
+        validate: {
+          notEmpty: {
+            msg: "User id must be provided",
+          },
+        },
+      },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "Title must be provides",
+          },
+        },
+      },
+      description: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [0, 300],
+            msg: "Description must be less than 300 characters",
+          },
+        },
+      },
+      task_status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isIn: {
+            args: [["Create", "Progress", "Hold", "Complete"]],
+            msg: " Task status must be Create, Progress, Hold, Complete",
+          },
+        },
+      },
+      priority: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isIn: {
+            args: [["Low", "Medium", "High"]],
+            msg: "Priority must be Low, Medium, or High",
+          },
+        },
+      },
+      duration: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "Duration of project cannot be null",
+          },
+        },
+      },
+      added_by: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "Please add added by",
+          },
+        },
+      },
+    },
+    {
+      paranoid: true,
+    }
+  );
+  return Task;
+};
