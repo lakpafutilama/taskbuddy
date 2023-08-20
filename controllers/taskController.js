@@ -1,29 +1,14 @@
-const db = require("../associations/association");
 const { response } = require("../utils/response");
-
-const Task = db.task;
+const {
+  findTask,
+  postTask,
+  editTask,
+  removeTask,
+} = require("../services/task");
 
 async function getTasks(req, res, next) {
   try {
-    const data = await Task.find({
-      where: {
-        user_id: req.params.id,
-      },
-    });
-    res.json(response(data, res.statusCode));
-  } catch (err) {
-    next(err);
-  }
-}
-
-async function getSpecificTask(req, res, next) {
-  try {
-    const data = await Task.find({
-      where: {
-        user_id: req.params.id,
-        task_status: req.params.ts,
-      },
-    });
+    const data = await findTask(req.params.id, req.query);
     res.json(response(data, res.statusCode));
   } catch (err) {
     next(err);
@@ -32,8 +17,8 @@ async function getSpecificTask(req, res, next) {
 
 async function createTask(req, res, next) {
   try {
-    await Task.create(req.body);
-    res.json(response("New task created"));
+    await postTask(req.body);
+    res.json(response("New task created", res.statusCode));
   } catch (err) {
     next(err);
   }
@@ -41,8 +26,8 @@ async function createTask(req, res, next) {
 
 async function updateTask(req, res, next) {
   try {
-    await Task.update(req.body);
-    res.json(response("Task updated"));
+    await editTask(req.params.id, req.body);
+    res.json(response("Task updated", res.statusCode));
   } catch (err) {
     next(err);
   }
@@ -50,8 +35,8 @@ async function updateTask(req, res, next) {
 
 async function deleteTask(req, res, next) {
   try {
-    await Task.delete();
-    res.json(response("New task created"));
+    await removeTask(req.params.id);
+    res.json(response("Task deleted", res.statusCode));
   } catch (err) {
     next(err);
   }
@@ -59,7 +44,6 @@ async function deleteTask(req, res, next) {
 
 module.exports = {
   getTasks,
-  getSpecificTask,
   createTask,
   updateTask,
   deleteTask,

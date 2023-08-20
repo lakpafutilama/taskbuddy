@@ -33,8 +33,8 @@ const createUser = async (payload) => {
 
 const createUsername = async (un) => {
   try {
-    const data = await readSpecificUser(un);
-    let uname = un;
+    let uname = un.toLowerCase();
+    const data = await readSpecificUser(uname);
     if (data.length > 0) {
       uname = uname + data.length;
     }
