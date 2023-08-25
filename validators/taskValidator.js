@@ -2,7 +2,6 @@ const { body, validationResult } = require("express-validator");
 const { response } = require("../utils/response");
 
 const validateTask = [
-  body("user_id").isInt().withMessage("User id cannot be empty"),
   body("title").notEmpty().withMessage("Title cannot be empty"),
   body("task_status")
     .isIn(["Create", "Progress", "Hold", "Complete"])

@@ -8,11 +8,11 @@ const {
 } = require("../controllers/taskController");
 const router = express.Router();
 
-router.get("/:id", getTasks);
+router.get("/:user", getTasks);
 
 router.post("/", validateTask, createTask);
 
-router.put("/id", updateTask);
+router.put("/:id", updateTask);
 
 router.delete("/:id", deleteTask);
 

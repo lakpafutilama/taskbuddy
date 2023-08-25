@@ -7,15 +7,6 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      user_id: {
-        type: DataTypes.INTEGER,
-        unique: true,
-        validate: {
-          notEmpty: {
-            msg: "User id must be provided",
-          },
-        },
-      },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -26,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         validate: {
           len: {
             args: [0, 300],

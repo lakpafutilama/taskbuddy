@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.use(express.static("sources"));
+app.use(express.static("views"));
 
 userRouter.use(errorHandler);
 taskRouter.use(errorHandler);

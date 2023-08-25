@@ -9,4 +9,8 @@ router.get("/dashboard", (req, res) => {
   res.render("dashboard");
 });
 
+router.get("/analytics", (req, res) => {
+  res.render("dragNdrop");
+});
+
 module.exports = router;

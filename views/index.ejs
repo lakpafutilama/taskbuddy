@@ -217,7 +217,7 @@
     </div>
 
     <header>
-      <nav class="navbar navbar-expand navbar-light bg-dark">
+      <nav class="navbar navbar-expand navbar-light bg-dark" style="position: fixed; width: 100%;">
         <a
           href="#"
           class="navbar-brand"
@@ -250,12 +250,101 @@
         <div class="col-md-4">
             <img src="logo2.png" height="475px" alt="" />
         </div>
-            <p class="container-fluid" style="width: 400px; height: 30px; padding-top: 250px;"> Task Buddy is a platform designed to help individuals organize, track, 
+            <p class="container-fluid" style="font-weight: 500; text-align: justify; width: 400px; height: 30px; padding-top: 250px;"> Task Buddy is a platform designed to help individuals organize, track, 
                 and prioritize tasks and activities. These tool aims to improve productivity, collaboration, and time management by providing a
                 structured way to manage work-related tasks and projects. Here are some key features and concepts associated with task 
                 management tools
             </p>
     </div>
+    <footer class="bg-dark" style="position: fixed; width: 100%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-column">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <span class="footer-title">Info</span>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Frequently asked questions</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 footer-column">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <span class="footer-title">Company</span>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Job postings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">News and articles</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 footer-column">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <span class="footer-title">Contact</span>
+              </li>
+              <li class="nav-item">
+                <span class="nav-link"
+                ><i class="fas fa-phone"></i> 01 23456</span
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                ><i class="fa fa-envelope"></i> taskbuddy@gmail.com</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="fas fa-star"></i>Give feedback</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+
+        <div class="row text-center">
+          <div class="col-md-4 box">
+            <span class="copyright quick-links"
+              >Copyright &copy; Your Website
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+            </span>
+          </div>
+          <div class="col-md-4 box">
+            
+          </div>
+          <div class="col-md-4 box">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- for signup -->
     <script>
       (function () {
@@ -285,7 +374,7 @@
               window.location.href = "dashboard"
             })
             .catch(function (error) {
-              alert("Error");
+              alert(error.response.data.message);
             });
           } else {
             form.classList.add('was-validated');
@@ -314,11 +403,10 @@
               password
             })
             .then(function (response) {
-              console.log(response)
+              alert(response.data.data)
               window.location.href = "dashboard"
             })
             .catch(function (error) {
-              console.log(error.response.data.message)
               alert(error.response.data.message);
             });
           } else {

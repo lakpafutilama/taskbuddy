@@ -1,11 +1,26 @@
 const db = require("../associations/association");
 const Task = db.task;
 
-const findTask = async (uid, queries) => {
+const findTask = async (user, queries) => {
   try {
-    queries.user_id = uid;
+    added_by = user;
     const data = await Task.findAll({
       where: queries,
+      attributes: ["id", "title", "description", "priority", "duration"],
+    });
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+const getTaskId = async (tid) => {
+  try {
+    const data = await Task.findAll({
+      where: {
+        id: tid,
+      },
+      attributes: ["id", "title", "description", "priority", "duration"],
     });
     return data;
   } catch (err) {
@@ -35,14 +50,14 @@ const editTask = async (t_id, payload) => {
 
 const removeTask = async (t_id) => {
   try {
-    await Task.delete({
+    await Task.destroy({
       where: {
         id: t_id,
       },
     });
   } catch (err) {
-    next(err);
+    throw err;
   }
 };
 
-module.exports = { findTask, postTask, editTask, removeTask };
+module.exports = { findTask, postTask, getTaskId, editTask, removeTask };
