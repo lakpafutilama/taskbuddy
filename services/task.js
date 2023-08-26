@@ -3,7 +3,7 @@ const Task = db.task;
 
 const findTask = async (user, queries) => {
   try {
-    added_by = user;
+    queries.added_by = user;
     const data = await Task.findAll({
       where: queries,
       attributes: ["id", "title", "description", "priority", "duration"],

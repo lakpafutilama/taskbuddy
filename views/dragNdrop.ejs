@@ -57,25 +57,25 @@
   <div class="row flex-nowrap">
     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-          <a href="/dashboard" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-              <span class="fs-5 d-none d-sm-inline">Dashboard</span>
+          <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              <span class="fs-5 d-none d-sm-inline">TASK BUDDY</span>
           </a>
           <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
               <li class="nav-item">
-                  <a href="/dashboard" class="nav-link align-middle px-0">
-                      <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                  </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Analytics</span>
-              </a>
-              </li>
+                        <a href="#" class="nav-link align-middle px-0" id="oldpage">
+                            <span class="ms-1 d-none d-sm-inline"><i class="fa fa-home"></i> Home</span>
+                        </a>
+                    </li>
+                    <li>
+                      <a href="#" class="nav-link px-0 align-middle">
+                        <span class="ms-1 d-none d-sm-inline"><i class="fas fa-tasks"></i> Analytics</span>
+                    </a>
+                    </li>
           <hr>
           <div class="dropdown pb-4" style="margin-top: 450px;">
               <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa fa-user"></i>
-                  <span class="d-none d-sm-inline mx-1">test.user</span>
+                  <span class="d-none d-sm-inline mx-1"><%= username%></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                   <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -113,9 +113,22 @@
   </div>
 </div>
 <script>
+  const goBackLink = document.getElementById("oldpage");
+  
+  goBackLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    window.history.back();
+  
+    setTimeout(function() {
+      window.location.href = window.location.href; 
+    }, 1000);
+  });
+  </script>
+<script>
   getData()
   async function getData(){
-    axios.get("http://localhost:8080/task/test.user?task_status=Create").then(function(response){
+    const username = '<%= username%>'
+    axios.get(`http://localhost:8080/task/${username}?task_status=Create`).then(function(response){
       const div = document.getElementById("created-lane")
       const created = response.data.data;
       for(let v of created){
@@ -126,7 +139,7 @@
         div.appendChild(task)
       }
     })
-    axios.get("http://localhost:8080/task/test.user?task_status=Progress").then(function(response){
+    axios.get(`http://localhost:8080/task/${username}?task_status=Progress`).then(function(response){
       const div = document.getElementById("progress-lane")
       const progress = response.data.data;
       for(let v of progress){
@@ -137,7 +150,7 @@
         div.appendChild(task)
       }
     })
-    axios.get("http://localhost:8080/task/test.user?task_status=Hold").then(function(response){
+    axios.get(`http://localhost:8080/task/${username}?task_status=Hold`).then(function(response){
       const div = document.getElementById("hold-lane")
       const hold = response.data.data;
       for(let v of hold){
@@ -148,7 +161,7 @@
         div.appendChild(task)
       }
     })
-    axios.get("http://localhost:8080/task/test.user?task_status=Complete").then(function(response){
+    axios.get(`http://localhost:8080/task/${username}?task_status=Complete`).then(function(response){
       const div = document.getElementById("done-lane")
       const complete = response.data.data;
       for(let v of complete){

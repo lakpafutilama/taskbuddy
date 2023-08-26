@@ -14,7 +14,7 @@ async function checkUser(req, res, next) {
         .status(422)
         .json(response("Password mismatch", res.statusCode));
 
-    res.json(response("Login successfull", res.statusCode));
+    res.json(response(data, res.statusCode));
   } catch (err) {
     next(err);
   }

@@ -6,11 +6,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/dashboard", (req, res) => {
-  res.render("dashboard");
+  const queryString = req.query.user;
+  const user = JSON.parse(decodeURIComponent(queryString));
+  res.render("dashboard", { user });
 });
 
 router.get("/analytics", (req, res) => {
-  res.render("dragNdrop");
+  const username = req.query.name;
+  res.render("dragNdrop", { username });
 });
 
 module.exports = router;

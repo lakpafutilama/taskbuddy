@@ -403,8 +403,9 @@
               password
             })
             .then(function (response) {
-              alert(response.data.data)
-              window.location.href = "dashboard"
+              alert("Login successfull")
+              const encodedUser = encodeURIComponent(JSON.stringify({name: response.data.data.name, username: response.data.data.username}));
+              window.location.href = `dashboard?user=${encodedUser}`
             })
             .catch(function (error) {
               alert(error.response.data.message);
