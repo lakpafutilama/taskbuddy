@@ -127,6 +127,7 @@
 <script>
   getData()
   async function getData(){
+    let id;
     const username = '<%= username%>'
     axios.get(`http://localhost:8080/task/${username}?task_status=Create`).then(function(response){
       const div = document.getElementById("created-lane")
@@ -134,6 +135,7 @@
       for(let v of created){
         const task = document.createElement("p");
         task.innerHTML = v.title;
+        task.setAttribute("data-task-id", v.id)
         task.setAttribute("class", "task")
         task.setAttribute("draggable", true)
         div.appendChild(task)
@@ -145,6 +147,7 @@
       for(let v of progress){
         const task = document.createElement("p");
         task.innerHTML = v.title;
+        task.setAttribute("data-task-id", v.id)
         task.setAttribute("class", "task")
         task.setAttribute("draggable", true)
         div.appendChild(task)
@@ -156,6 +159,7 @@
       for(let v of hold){
         const task = document.createElement("p");
         task.innerHTML = v.title;
+        task.setAttribute("data-task-id", v.id)
         task.setAttribute("class", "task")
         task.setAttribute("draggable", true)
         div.appendChild(task)
@@ -167,6 +171,7 @@
       for(let v of complete){
         const task = document.createElement("p");
         task.innerHTML = v.title;
+        task.setAttribute("data-task-id", v.id) 
         task.setAttribute("class", "task")
         task.setAttribute("draggable", true)
         div.appendChild(task)

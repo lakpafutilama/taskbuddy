@@ -1,9 +1,12 @@
 const draggables = document.querySelectorAll(".task");
 const droppables = document.querySelectorAll(".swim-lane");
 
+let tid;
+
 draggables.forEach((task) => {
   task.addEventListener("dragstart", () => {
     task.classList.add("is-dragging");
+    tid = task.getAttribute("data-task-id");
   });
   task.addEventListener("dragend", () => {
     task.classList.remove("is-dragging");
@@ -35,7 +38,7 @@ droppables.forEach((zone) => {
       else if (targetSwimLane.id == "progress-lane") task_status = "Progress";
       else if (targetSwimLane.id == "hold-lane") task_status = "Hold";
       else if (targetSwimLane.id == "done-lane") task_status = "Complete";
-      updateStatus({ task_status });
+      updateStatus(tid, { task_status });
     }
   });
 });
@@ -59,9 +62,12 @@ const insertAboveTask = (zone, mouseY) => {
   return closestTask;
 };
 
-async function updateStatus(payload) {
+async function updateStatus(tid, payload) {
   try {
-    const response = await axios.put("http://localhost:8080/task/1", payload);
+    const response = await axios.put(
+      `http://localhost:8080/task/${tid}`,
+      payload
+    );
     alert(response.data.data);
     window.location.reload();
   } catch (error) {
