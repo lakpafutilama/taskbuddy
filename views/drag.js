@@ -34,7 +34,7 @@ droppables.forEach((zone) => {
     const targetSwimLane = e.target.closest(".swim-lane");
     if (targetSwimLane) {
       let task_status;
-      if (targetSwimLane.id == "created-lane") task_status = "Created";
+      if (targetSwimLane.id == "created-lane") task_status = "Create";
       else if (targetSwimLane.id == "progress-lane") task_status = "Progress";
       else if (targetSwimLane.id == "hold-lane") task_status = "Hold";
       else if (targetSwimLane.id == "done-lane") task_status = "Complete";

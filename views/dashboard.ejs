@@ -10,6 +10,10 @@
     />
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const name = '<%= user.username%>'
+      const encodedname = encodeURIComponent(JSON.stringify({name}))
+    </script>
   </head>
   <body
     class="bg-image"
@@ -157,7 +161,7 @@
                         </a>
                     </li>
                     <li>
-                      <a href="/analytics?name=<%= user.username%>" class="nav-link px-0 align-middle">
+                      <a href="/analytics" class="nav-link px-0 align-middle" onclick="location.href=this.href+'?name='+encodedname;return false;">
                         <span class="ms-1 d-none d-sm-inline"><i class="fas fa-tasks"></i> Analytics</span>
                     </a>
                     </li>

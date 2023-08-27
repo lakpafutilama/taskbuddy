@@ -12,7 +12,8 @@ router.get("/dashboard", (req, res) => {
 });
 
 router.get("/analytics", (req, res) => {
-  const username = req.query.name;
+  const un = JSON.parse(decodeURIComponent(req.query.name));
+  const username = un.name;
   res.render("dragNdrop", { username });
 });
 
