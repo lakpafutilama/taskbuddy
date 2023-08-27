@@ -365,13 +365,16 @@
       
             axios.post("http://localhost:8080/user", {
               name: `${firstName} ${lastName}`,
-              username: `${firstName}.${lastName}`,
+              username: `${firstName.toLowerCase()}.${lastName.toLowerCase()}`,
               email,
               password
             })
             .then(function (response) {
+              const un = response.data.data.split(" ")[0]
+              const name = `${firstName} ${lastName}`
               alert(response.data.data)
-              window.location.href = "dashboard"
+              const encodedUser = encodeURIComponent(JSON.stringify({name, username: un}));
+              window.location.href = `dashboard?user=${encodedUser}`
             })
             .catch(function (error) {
               alert(error.response.data.message);
